@@ -73,6 +73,7 @@ body {
 	justify-content: center;
 	top: auto;
 	left: auto;
+	transition: 0.2s linear;
 }
 
 .colors {

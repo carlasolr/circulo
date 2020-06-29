@@ -14,7 +14,9 @@ window.onload = function(){
 
 	buttonLeft.onclick = function(){
 		const leftDirection = myCircle.offsetLeft
- 		myCircle.style.left = leftDirection - 20
+ 		if(leftDirection >= 0){
+			myCircle.style.left = leftDirection - 20
+		}	
 	}
 
 	buttonRight.onclick = function(){
@@ -24,7 +26,9 @@ window.onload = function(){
 
 	buttonUp.onclick = function(){
 		const topDirection = myCircle.offsetTop
-		myCircle.style.top = topDirection - 20
+		if(topDirection >= 0){
+			myCircle.style.top = topDirection - 20
+		}	
 	}
 
 	buttonDown.onclick = function(){
@@ -40,13 +44,21 @@ window.onload = function(){
 
 		switch(event.key){
 		case 'ArrowUp':
-			myCircle.style.top = topDirection - 20
+			if(topDirection >= 0){
+				myCircle.style.top = topDirection - 20
+			}else{
+				myCircle.style.top = topDirection + 40
+			}			
 			break
 		case 'ArrowDown':
 			myCircle.style.top = topDirection + 20
 			break
 		case 'ArrowLeft':
-			myCircle.style.left = leftDirection - 20	
+			if(leftDirection >= 0){
+				myCircle.style.left = leftDirection - 20
+			}else{
+				myCircle.style.left = leftDirection + 40
+			}		
 			break
 		case 'ArrowRight':
 			myCircle.style.left = leftDirection + 20	
@@ -80,30 +92,9 @@ window.onload = function(){
 	}
 
 
-	///////////////////////
-}
+	/////////////////////// LIMITES
 
-/*
-function move(element, direction, distance=20) {
-   var topOrLeft = (direction=="left" || direction=="right") ? "left" : "top";
-   var frameDistance = 1;
-   if (direction=="up" || direction=="left"){
-      distance *= -1;
-      frameDistance = -1;
-   }
-   var elStyle = window.getComputedStyle(element);
-   var value = elStyle.getPropertyValue(topOrLeft).replace("px", "");
-   var destination = (Number(value) + distance) + "px";
-   function moveAFrame() {
-      if (elStyle.getPropertyValue(topOrLeft)==destination) {
-        clearInterval(movingFrames);
-      }
-      else {
-         elStyle = window.getComputedStyle(element);
-         value = elStyle.getPropertyValue(topOrLeft).replace("px", "");
-        element.style[topOrLeft] = (Number(value) + frameDistance) + "px";
-      }
-   }
-   var movingFrames = setInterval(moveAFrame, 10);
+	function limits(){
+
+	}
 }
-*/
